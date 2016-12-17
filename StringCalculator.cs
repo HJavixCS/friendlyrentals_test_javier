@@ -8,7 +8,9 @@ namespace fr_stringcalculator
   {
     public int Add(string numbers)
     {
-      return numbers.Length == 0 ? default(int) : int.MaxValue;
+      return numbers.Length == 0 
+        ? default(int) 
+        : Int32.Parse(numbers);
     }
   }
 }
