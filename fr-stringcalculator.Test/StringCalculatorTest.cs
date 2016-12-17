@@ -26,5 +26,17 @@ namespace fr_stringcalculator.Test
       var actual = calculator.Add(enteredNumber);
       Assert.AreEqual(expectedNumber, actual);
     }
+
+    [Test]
+    [TestCase("0,0", 0)]
+    [TestCase("1,1", 2)]
+    [TestCase("1,2", 3)]
+    [TestCase("100,1", 101)]
+    public void Given_TheStringCalculator_When_EnterTwoNumbers_Then_ReturnTheirSum(string enteredNumber, int expectedNumber)
+    {
+      var calculator = new StringCalculator();
+      var actual = calculator.Add(enteredNumber);
+      Assert.AreEqual(expectedNumber, actual);
+    }
   }
 }
