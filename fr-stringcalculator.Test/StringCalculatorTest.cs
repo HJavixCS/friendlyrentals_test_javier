@@ -38,5 +38,29 @@ namespace fr_stringcalculator.Test
       var actual = calculator.Add(enteredNumber);
       Assert.AreEqual(expectedNumber, actual);
     }
+
+    [Test]
+    [TestCase("1", 1)]
+    [TestCase("1,1", 2)]
+    [TestCase("1,1,2", 4)]
+    [TestCase("1,1,2,3", 7)]
+    public void Given_TheStringCalculator_When_EnterAnUnknowAmountOfNumbers_Then_ReturnTheirSum(string enteredNumbers, int expectedSum)
+    {
+      var calculator = new StringCalculator();
+      var actualSum = calculator.Add(enteredNumbers);
+      Assert.AreEqual(expectedSum, actualSum);
+    }
+
+    [Test]
+    [TestCase("1", 1)]
+    [TestCase("1,1", 2)]
+    [TestCase("1,1\n2", 4)]
+    [TestCase("1\n1,2\n3", 7)]
+    public void Given_TheStringCalculator_When_EnterAnUnknowAmountOfNumbersAndUsingNewLineOrCommaDelimiter_Then_ReturnTheirSum(string enteredNumbers, int expectedSum)
+    {
+      var calculator = new StringCalculator();
+      var actualSum = calculator.Add(enteredNumbers);
+      Assert.AreEqual(expectedSum, actualSum);
+    }
   }
 }

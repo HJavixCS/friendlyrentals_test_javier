@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace fr_stringcalculator
 {
   public class StringCalculator
   {
-    public static char Delimiter { get; } = ',';
+    private static readonly char[] Delimiters = { ',', '\n' };
 
     public int Add(string numbers)
     {
       return numbers.Length == 0 
         ? default(int) 
-        : Array.ConvertAll(numbers.Split(Delimiter), int.Parse).Sum();
+        : GetNumbers(numbers).Sum();
+    }
+
+    private static IEnumerable<int> GetNumbers(string numbers)
+    {
+      return Array.ConvertAll(numbers.Split(Delimiters), int.Parse);
     }
   }
 }
