@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace fr_stringcalculator
 {
   public class StringCalculator
   {
-    public int Add()
+    public int Add(string numbers)
     {
-      return 0;
+      return numbers.Length == 0 ? default(int) : int.MaxValue;
     }
   }
 }

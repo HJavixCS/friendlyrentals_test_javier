@@ -1,5 +1,4 @@
-﻿using fr_stringcalculator;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 
 namespace fr_stringcalculator.Test
@@ -8,11 +7,12 @@ namespace fr_stringcalculator.Test
   public class StringCalculatorTest
   {
     [Test]
-    public void Given_TheStringCalculator_When_EnterNothing_Then_ReturnZero()
+    [TestCase("")]
+    public void Given_TheStringCalculator_When_EnterEmptyString_Then_ReturnZero(string numbers)
     {
       var calculator = new StringCalculator();
       var expected = 0;
-      var actual = calculator.Add();
+      var actual = calculator.Add(numbers);
       Assert.AreEqual(expected, actual);
     }
   }
