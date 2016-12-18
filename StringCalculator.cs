@@ -18,7 +18,25 @@ namespace fr_stringcalculator
     {
       return numbers.Length == 0 
         ? default(int) 
-        : GetNumbers(numbers).Sum();
+        : GetPositiveNumbers(numbers).Sum();
+    }
+
+    private static IEnumerable<int> GetPositiveNumbers(string numbers)
+    {
+      var allNumbers = GetNumbers(numbers);
+      var positiveNumbers = allNumbers as int[] ?? allNumbers.ToArray();
+      ValidatePositiveNumbers(positiveNumbers);
+
+      return positiveNumbers;
+    }
+
+    private static void ValidatePositiveNumbers(IEnumerable<int> allNumbers)
+    {
+      var negativeNumbers = allNumbers.Where(n => n < 0).ToList();
+      if (negativeNumbers.Count > 0)
+      {
+        throw new ArgumentException("Negatives not allowed: " + negativeNumbers);
+      }
     }
 
     private static IEnumerable<int> GetNumbers(string numbers)

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 
 namespace fr_stringcalculator.Test
@@ -76,6 +77,17 @@ namespace fr_stringcalculator.Test
       var calculator = new StringCalculator();
       var actualSum = calculator.Add(enteredNumbers);
       Assert.AreEqual(expectedSum, actualSum);
+    }
+
+    [Test]
+    [TestCase("-1", 1)]
+    [TestCase("1,-1", 2)]
+    [TestCase("-1,1,-2", 4)]
+    [TestCase("1,-1,2,-3", 7)]
+    public void Given_TheStringCalculator_When_EnterAnUnknowAmountOfNegativeNumbers_Then_ThrowsAnException(string enteredNumbers, int expectedSum)
+    {
+      var calculator = new StringCalculator();
+      Assert.That(() => calculator.Add(enteredNumbers), Throws.TypeOf<ArgumentException>());
     }
   }
 }
