@@ -62,5 +62,20 @@ namespace fr_stringcalculator.Test
       var actualSum = calculator.Add(enteredNumbers);
       Assert.AreEqual(expectedSum, actualSum);
     }
+
+    [Test]
+    [TestCase("//.\n1", 1)]
+    [TestCase("//:\n1:1", 2)]
+    [TestCase("//|\n1|1|2", 4)]
+    [TestCase("//_\n1_1_2_3", 7)]
+    [TestCase("//.\n1//:\n1:1", 3)]
+    [TestCase("//|\n1|1|2//_\n1_1_2_3", 11)]
+    [TestCase("//.\n1//:\n1:1//|\n1|1|2//_\n1_1_2_3", 14)]
+    public void Given_TheStringCalculator_When_EnterAnUnknowAmountOfNumbersAndUsingCustomDelimiter_Then_ReturnTheirSum(string enteredNumbers, int expectedSum)
+    {
+      var calculator = new StringCalculator();
+      var actualSum = calculator.Add(enteredNumbers);
+      Assert.AreEqual(expectedSum, actualSum);
+    }
   }
 }
