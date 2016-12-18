@@ -1,7 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
 
-
 namespace fr_stringcalculator.Test
 {
   [TestFixture]
